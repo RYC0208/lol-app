@@ -1,13 +1,24 @@
+// app/champion/[id]/page.tsx
 import React from "react";
-import { Champion, ChampionList } from "@/types/Champion";
-import { getChampionDetail, getLatestVersion } from "@/utils/Api";
 import ChampionSkill from "@/components/champion/ChampionSkill";
 import ChampionSkin from "@/components/champion/ChampionSkin";
-const ChampionDetailPage = async ({ params }: ChampionList) => {
-  const version = await getLatestVersion();
+import {
+  getChampionDetailAction,
+  getLatestVersion,
+} from "@/server/ChampActions";
+
+const ChampionDetailPage = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
 
-  const champion: Champion = await getChampionDetail(id);
+  const champion = await getChampionDetailAction(id);
+  const version = await getLatestVersion();
+  if (!champion) {
+    return (
+      <div>
+        <h1>챔피언을 찾을 수 없습니다.</h1>
+      </div>
+    );
+  }
 
   return (
     <div>

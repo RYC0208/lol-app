@@ -16,7 +16,7 @@ const SelectedItemDetail = ({
   onItemClick,
 }: SelectedItemDetailProps) => {
   return (
-    <div className="mt-6 p-4 border rounded bg-gray-900 text-white w-1/2 h-[800px] overflow-y-auto">
+    <div className="text-white  h-screen  overflow-y-auto">
       {selectedItem.into && selectedItem.into.length > 0 && (
         <div>
           <div className="flex flex-row">
@@ -25,7 +25,7 @@ const SelectedItemDetail = ({
                 (item) => item.image.full === `${itemId}.png`
               );
               return (
-                <div key={upperItem?.id} className="mb-4">
+                <div key={crypto.randomUUID()} className="mb-4">
                   {upperItem && (
                     <div
                       className="flex cursor-pointer"

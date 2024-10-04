@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Champion } from "@/types/Champion";
-import { getRotation } from "@/utils/RiotApi";
+import { getRotation } from "@/server/Api";
 import ChampionList from "@/components/champion/ChampionList";
 
 const RotationPage = () => {
