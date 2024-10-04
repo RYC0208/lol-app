@@ -35,8 +35,6 @@ const ChampionSkin = ({ champion }: ChampionSkinProps) => {
         )}
       </div>
       <div className="flex justify-center space-x-4">
-        {" "}
-        {/* 이미지 간의 여백을 추가 */}
         {champion.skins.map((skin) => {
           const isSelected = selectedSkin.id === skin.id;
           return (
@@ -51,8 +49,8 @@ const ChampionSkin = ({ champion }: ChampionSkinProps) => {
                 alt={skin.name}
                 width={100}
                 height={100}
-                className="rounded-lg transition-transform duration-300 hover:scale-110 cursor-pointer" // border-none을 기본 스타일로 제거
-                onClick={() => handleSkinClick(skin)} // 클릭 시 핸들러 호출
+                className="rounded-lg transition-transform duration-300 hover:scale-110 cursor-pointer" 
+                onClick={() => handleSkinClick(skin)}
               />
             </div>
           );

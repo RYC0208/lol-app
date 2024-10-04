@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} bg-transparent w-[1600px] m-auto`}
       >
         <header>
-          <nav className="w-full flex items-center justify-around text-white bg-black">
+          <nav className="w-full h-[36px] flex items-center justify-around text-white bg-black">
             <Link href={"/"}>홈</Link>
             <Link href={"/champions"}>챔피언 목록</Link>
             <Link href={"/items"}>아이템 목록</Link>
