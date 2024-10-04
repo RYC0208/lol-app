@@ -1,20 +1,9 @@
 "use server";
 
 import { Champion, ChampionList } from "@/types/Champion";
+import { Day, getLatestVersion } from "./Api";
 
-const Day = 24 * 60 * 60 * 1000; // 1일
-const fiveDays = 5 * Day; // 5일
-
-export const getLatestVersion = async () => {
-  const res = await fetch(
-    "https://ddragon.leagueoflegends.com/api/versions.json",
-    {
-      next: { revalidate: fiveDays },
-    }
-  );
-  const data = await res.json();
-  return data[0];
-};
+// 1일
 
 export async function getChampionListAction(): Promise<Champion[]> {
   try {
@@ -22,7 +11,7 @@ export async function getChampionListAction(): Promise<Champion[]> {
     const res = await fetch(
       `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion.json`,
       {
-        next: { revalidate: fiveDays },
+        next: { revalidate: Day },
       }
     );
 
@@ -34,14 +23,16 @@ export async function getChampionListAction(): Promise<Champion[]> {
   }
 }
 
-export const getChampionDetailAction = async (id: string): Promise<Champion> => {
+export const getChampionDetailAction = async (
+  id: string
+): Promise<Champion> => {
   try {
     const version = await getLatestVersion();
     const res = await fetch(
       `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion/${id}.json`,
       {
         cache: "no-store",
-        next: { revalidate: fiveDays },
+        next: { revalidate: Day },
       }
     );
 

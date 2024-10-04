@@ -2,7 +2,8 @@
 import React from "react";
 import { Item } from "@/types/Item";
 import ItemClient from "@/components/item/ItemClient";
-import { getItemListAction, getLatestVersion } from "@/server/ItemActions";
+import { getItemListAction } from "@/server/ItemActions";
+import { getLatestVersion } from "@/server/Api";
 
 const Page = async () => {
   const version: string = await getLatestVersion();

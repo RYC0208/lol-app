@@ -1,20 +1,7 @@
 "use server";
 
 import { Item, ItemList } from "@/types/Item";
-
-const Day = 24 * 60 * 60 * 1000; // 1일
-const fiveDays = 5 * Day; // 5일
-
-export const getLatestVersion = async () => {
-  const res = await fetch(
-    "https://ddragon.leagueoflegends.com/api/versions.json",
-    {
-      next: { revalidate: fiveDays },
-    }
-  );
-  const data = await res.json();
-  return data[0];
-};
+import { Day, getLatestVersion } from "./Api";
 
 export async function getItemListAction(): Promise<Item[] | undefined> {
   try {
@@ -22,7 +9,7 @@ export async function getItemListAction(): Promise<Item[] | undefined> {
     const res = await fetch(
       `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/item.json`,
       {
-        next: { revalidate: fiveDays },
+        next: { revalidate: Day },
       }
     );
     if (!res.ok) throw new Error();

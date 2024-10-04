@@ -2,10 +2,8 @@
 import React from "react";
 import ChampionSkill from "@/components/champion/ChampionSkill";
 import ChampionSkin from "@/components/champion/ChampionSkin";
-import {
-  getChampionDetailAction,
-  getLatestVersion,
-} from "@/server/ChampActions";
+import { getChampionDetailAction } from "@/server/ChampActions";
+import { getLatestVersion } from "@/server/Api";
 
 const ChampionDetailPage = async ({ params }: { params: { id: string } }) => {
   const { id } = params;

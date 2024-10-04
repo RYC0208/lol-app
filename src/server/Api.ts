@@ -24,3 +24,16 @@ export const getRotation = async (): Promise<Champion[]> => {
     return [];
   }
 };
+
+export const getLatestVersion = async () => {
+  const res = await fetch(
+    "https://ddragon.leagueoflegends.com/api/versions.json",
+    {
+      next: { revalidate: Day },
+    }
+  );
+  const data = await res.json();
+  return data[0];
+};
+
+export const Day = 24 * 60 * 60 * 1000;
