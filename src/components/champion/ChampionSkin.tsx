@@ -49,7 +49,7 @@ const ChampionSkin = ({ champion }: ChampionSkinProps) => {
                 alt={skin.name}
                 width={100}
                 height={100}
-                className="rounded-lg transition-transform duration-300 hover:scale-110 cursor-pointer" 
+                className="rounded-lg transition-transform duration-300 hover:scale-110 cursor-pointer"
                 onClick={() => handleSkinClick(skin)}
               />
             </div>

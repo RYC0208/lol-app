@@ -9,6 +9,7 @@ const ChampionDetailPage = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
 
   const champion = await getChampionDetailAction(id);
+  console.log(champion);
   const version = await getLatestVersion();
   if (!champion) {
     return (

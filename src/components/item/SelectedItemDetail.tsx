@@ -64,6 +64,7 @@ const SelectedItemDetail = ({
         className="mt-2 mb-4"
         dangerouslySetInnerHTML={{ __html: selectedItem.description }}
       />
+      <h3 className="text-lg font-bold mb-2 text-gray-300">하위 아이템</h3>
       <ItemTree
         item={selectedItem}
         items={items}

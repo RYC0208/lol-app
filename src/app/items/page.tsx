@@ -7,7 +7,7 @@ import { getLatestVersion } from "@/server/Api";
 
 const Page = async () => {
   const version: string = await getLatestVersion();
-  const itemList: Item[] | undefined = await getItemListAction();
+  const itemList: Item[] = await getItemListAction();
 
   const filteredItems =
     itemList

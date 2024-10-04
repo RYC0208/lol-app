@@ -15,7 +15,6 @@ const ItemTree = ({ item, items, version, onItemClick }: ItemTreeProps) => {
 
   return (
     <div className="pl-4 border-l-2 border-gray-600">
-      <h3 className="text-lg font-bold mb-2">재료 아이템:</h3>
       <div className="flex flex-col">
         {item.from.map((itemId) => {
           const lowerItem = items.find((i) => i.image.full === `${itemId}.png`);
