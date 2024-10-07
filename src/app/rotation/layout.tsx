@@ -1,4 +1,4 @@
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 
 export const metadata = {
   title: "롤 로테이션 챔피언 목록",
