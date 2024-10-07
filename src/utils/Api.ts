@@ -5,7 +5,7 @@ export const getRotation = async (): Promise<Champion[]> => {
   try {
     const champions = await getChampionListAction();
 
-    const response = await fetch(`http://localhost:3000/api/rotation`);
+    const response = await fetch(`/api/rotation`);
 
     if (!response.ok) {
       throw new Error(`응답 에러: ${response.status}`);
