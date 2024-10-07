@@ -11,8 +11,6 @@ interface LayoutProps {
 
 export default function RotationLayout({ children }: LayoutProps) {
   return (
-    <Suspense fallback={<>... 로딩</>}>
-      <div>{children}</div>
-    </Suspense>
+      <>{children}</>
   );
 }
