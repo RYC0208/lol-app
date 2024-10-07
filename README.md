@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 롤 정보 제공 사이트
 
-## Getting Started
+Next.js와 TypeScript를 사용하고 라이엇 API를 활용한 챔피언 정보 및 아이템 정보를 제공해주는 프로젝트
 
-First, run the development server:
+![캡처ㅁㄴㅇㄴㅁ](https://github.com/user-attachments/assets/419f0a4d-f564-4f5a-8a16-435b529fe51b)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🕰️ 개발 기간
+
+2024.10-01 ~ 2024.10.08 -> 추가 업데이트 예정
+
+## 📂 폴더 구조
+```
+src
+├── app
+│   ├── api
+│   │   └── rotation
+│   │       └── route.ts
+│   ├── champions
+│   │   ├── [id]
+│   │   │   └── page.tsx
+│   │   └── page.tsx
+│   ├── items
+│   │   └── page.tsx
+│   ├── rotation
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components
+│   ├── champion
+│   │   ├── ChampionCard.tsx
+│   │   ├── ChampionList.tsx
+│   │   ├── ChampionSkill.tsx
+│   │   └── ChampionSkin.tsx
+│   └── item
+│       ├── ItemClient.tsx
+│       ├── ItemList.tsx
+│       ├── ItemTree.tsx
+│       └── SelectedItemDetail.tsx
+├── server
+│   ├── ChampAction.ts
+│   └── ItemActions.ts
+├── types
+│   ├── Champion.ts
+│   ├── ChampionRotation.ts
+│   └── Item.ts
+└── utils
+    └── API.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 기능
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1 챔피언 정보 제공
 
-## Learn More
+#### 1-1 챔피언 리스트
 
-To learn more about Next.js, take a look at the following resources:
+![ㅁㅇㄴ](https://github.com/user-attachments/assets/71e55825-f999-46e8-90ca-73d308307ee5)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+League of Legend 에서 사용 가능한 챔피언의 리스트를 전부 확인 가능합니다
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### 1-2 챔피언 상세페이지 
+![상세](https://github.com/user-attachments/assets/4b524dd3-9ce6-4543-8cb5-969a3656183b)
 
-## Deploy on Vercel
+챔피언의 대한 배경을 확인 가능하며
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![상세2](https://github.com/user-attachments/assets/0cf754cd-076f-4e7c-a08a-336e5cb6bc53)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+챔피언의 스킬 또한 확인이 가능합니다
+
+![상세3](https://github.com/user-attachments/assets/80e06d72-8537-46ad-a271-8d6eb28fa6c1)
+
+각 챔피언의 스킨 일러스트 또한 확인할 수 있습니다.
+
+### 2 아이템 정보 제공
+
+![아이템](https://github.com/user-attachments/assets/1cf52111-8b15-4deb-b1a3-a7e54ebe19fb)
+
+소환사의 협곡에서 사용 가능한 아이템의 리스트를 제공하며 
+
+각 아이템의 상위 아이템과 하위 아이템을 보여줍니다
+
+상위 아이템 혹은 하위 아이템을 클릭해도 해당하는 아이템의 정보를 확인할 수 있습니다.
+
+### 3 로테이션 챔피언 리스트
+
+![로테이션](https://github.com/user-attachments/assets/34a9220b-c5fd-44b2-90ff-bd85736879d4)
+
+매주 라이엇에서 제공하는 무료 챔피언의 리스트 또한 확인이 가능합니다
+
+```
+  const API_KEY = process.env.RIOT_API_KEY;
+  const URL = "https://kr.api.riotgames.com/lol/platform/v3/champion-rotations";
+
+  const response = await fetch(URL, {
+    headers: {
+      "X-Riot-Token": API_KEY,
+    },
+    cache: "no-store",
+  });
+
+```
+
+라이엇에서 제공하는 API Key를 발급 받아서 헤더 옵션에 설정을 넣어주고 데이터를 받아왔습니다.
+
+
+
+
+# 회고
+
+더 많은 기능을 넣고 다른 라이브러리도 추가해서 서버 상태 관리나 전역 상태 관리도 했어야 했는데
+
+시간 내에 하지 못한 점이 너무 아쉽고 나중에 시간이 날 때마다 꼭 리팩토링해서 업데이트 하도록 하겠습니다!
+
+**🔥열정이 부족했다🔥**
