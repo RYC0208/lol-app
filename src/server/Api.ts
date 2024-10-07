@@ -17,7 +17,7 @@ export const getRotation = async (): Promise<Champion[]> => {
     const rotation: Champion[] = champions.filter((champion) =>
       freeChampionIds.includes(Number(champion.key))
     );
-
+    
     return rotation;
   } catch (error) {
     console.error("데이터 fetching에러 :", error);
