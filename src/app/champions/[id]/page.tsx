@@ -3,13 +3,24 @@ import React from "react";
 import ChampionSkill from "@/components/champion/ChampionSkill";
 import ChampionSkin from "@/components/champion/ChampionSkin";
 import { getChampionDetailAction } from "@/server/ChampActions";
-import { getLatestVersion } from "@/server/Api";
+import { getLatestVersion } from "@/utils/Api";
 
-const ChampionDetailPage = async ({ params }: { params: { id: string } }) => {
+type Props = {
+  params: {
+    id: string;
+  };
+};
+
+export function generateMetadata({ params }: Props) {
+  return {
+    title: `${params.id} 상세페이지`,
+    description: `${params.id}의 정보를 제공하는 상세페이지`,
+  };
+}
+
+const ChampionDetailPage = async ({ params }: Props) => {
   const { id } = params;
-
   const champion = await getChampionDetailAction(id);
-  console.log(champion);
   const version = await getLatestVersion();
   if (!champion) {
     return (

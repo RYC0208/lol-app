@@ -15,7 +15,8 @@ const ChampionCard: React.FC<ChampionCardProps> = ({ champion }) => {
           <Image
             src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`}
             alt={champion.name}
-            layout="fill"
+            width={300}
+            height={400}
             className="transition-transform duration-300 hover:scale-110"
           />
         </div>

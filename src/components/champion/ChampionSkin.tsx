@@ -20,14 +20,16 @@ const ChampionSkin = ({ champion }: ChampionSkinProps) => {
       <div className="m-auto p-10">
         <h1 className="text-5xl font-bold">스킨</h1>
       </div>
-      <div className="mb-4 m-auto p-10">
-        <Image
-          src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_${selectedSkin.num}.jpg`}
-          alt={selectedSkin.name}
-          width={1200}
-          height={1200}
-          className="rounded-lg"
-        />
+      <div className="flex flex-col mb-4 m-auto p-10 w-full h-full">
+        <div className="w-full h-[750px] relative">
+          <Image
+            src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_${selectedSkin.num}.jpg`}
+            alt={selectedSkin.name}
+            fill
+            className="rounded-lg"
+            sizes="(max-width: 600px) 100vw, 50vw"
+          />
+        </div>
         {selectedSkin.name === "default" ? (
           <p>{champion.name}</p>
         ) : (
@@ -40,15 +42,15 @@ const ChampionSkin = ({ champion }: ChampionSkinProps) => {
           return (
             <div
               key={skin.id}
-              className={`flex justify-center ${
+              className={`relative w-[100px] h-[50px] ${
                 isSelected ? "" : "opacity-30"
               }`}
             >
               <Image
                 src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_${skin.num}.jpg`}
                 alt={skin.name}
-                width={100}
-                height={100}
+                fill
+                sizes="(max-width: 600px) 100vw, 50vw"
                 className="rounded-lg transition-transform duration-300 hover:scale-110 cursor-pointer"
                 onClick={() => handleSkinClick(skin)}
               />

@@ -25,3 +25,16 @@ body {
     text-wrap: balance;
   }
 }
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.scrollbar-thumb-gray-900::-webkit-scrollbar-thumb {
+  background-color: #1f2937;
+  border-radius: 10px;
+}
+
+.scrollbar-track-gray-900::-webkit-scrollbar-track {
+  background: #1f2937;
+}

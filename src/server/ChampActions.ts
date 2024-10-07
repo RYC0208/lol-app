@@ -1,7 +1,7 @@
 "use server";
 
 import { Champion, ChampionList } from "@/types/Champion";
-import { Day, getLatestVersion } from "./Api";
+import { Day, getLatestVersion } from "../utils/Api";
 
 export const handleFetchError = (res: Response) => {
   if (!res.ok) {

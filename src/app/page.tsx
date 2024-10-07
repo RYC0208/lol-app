@@ -1,74 +1,29 @@
-import { getLatestVersion, getRotation } from "@/server/Api";
-import { getChampionListAction } from "@/server/ChampActions";
-import { getItemListAction } from "@/server/ItemActions";
-import { Champion } from "@/types/Champion";
-import { Item } from "@/types/Item";
-import Image from "next/image";
 import Link from "next/link";
-
 export default async function Home() {
-  const rotations: Champion[] = await getRotation();
-  const champions: Champion[] = await getChampionListAction();
-  const items: Item[] = await getItemListAction();
-  const version: string = await getLatestVersion();
-  console.log(rotations);
   return (
-    <div className="flex flex-col">
-      <Link href={"/champions"}>
-        챔피언 목록가기
-        <div className="flex flex-row">
-          {champions
-            .filter((champion, index) => index <= 15)
-            .sort((a, b) => a.name.localeCompare(b.name, "ko"))
-            .map((champion) => (
-              <div key={crypto.randomUUID()}>
-                <Image
-                  src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`}
-                  alt={champion.name}
-                  width={100}
-                  height={100}
-                />
-              </div>
-            ))}
-        </div>
-      </Link>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-[#0b1538] to-[#1b2234]">
+      <h1 className="text-3xl font-bold text-white mb-8">롤 정보 페이지</h1>
 
-      <Link href={"/items"}>
-        아이템 목록가기
-        <div className="flex flex-row flex-wrap">
-          {items
-            .filter((item, index) => index <= 105)
-            .sort((a, b) => a.name.localeCompare(b.name, "ko"))
-            .map((item) => (
-              <div key={crypto.randomUUID()}>
-                <Image
-                  src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item.image.full}`}
-                  alt={item.name}
-                  width={30}
-                  height={30}
-                />
-              </div>
-            ))}
-        </div>
-      </Link>
-      <Link href={"/rotation"}>
-        챔피언 로테이션가기
-        <div className="flex flex-row">
-          {rotations
-            .filter((champion, index) => index <= 15)
-            .sort((a, b) => a.name.localeCompare(b.name, "ko"))
-            .map((champion) => (
-              <div key={crypto.randomUUID()}>
-                <Image
-                  src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`}
-                  alt={champion.name}
-                  width={100}
-                  height={100}
-                />
-              </div>
-            ))}
-        </div>
-      </Link>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl">
+        <Link
+          href={"/champions"}
+          className="bg-[#1f2b3a] rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 flex flex-col items-center text-center text-white"
+        >
+          <h2 className="text-lg font-semibold mb-2">챔피언 목록</h2>
+        </Link>
+        <Link
+          href={"/items"}
+          className="bg-[#1f2b3a] rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 flex flex-col items-center text-center text-white"
+        >
+          <h2 className="text-lg font-semibold mb-2">아이템 목록</h2>
+        </Link>
+        <Link
+          href={"/rotation"}
+          className="bg-[#1f2b3a] rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 flex flex-col items-center text-center text-white"
+        >
+          <h2 className="text-lg font-semibold mb-2">로테이션 챔피언 목록</h2>
+        </Link>
+      </div>
     </div>
   );
 }

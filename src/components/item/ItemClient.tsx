@@ -19,7 +19,7 @@ const ItemClient = ({ items, version }: ItemClientProps) => {
 
   return (
     <>
-      <div className="flex flex-row justify-center w-1/2 h-screen overflow-y-auto">
+      <div className="flex flex-row justify-center w-1/2 h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-900">
         <ItemList
           items={items}
           version={version}
@@ -28,7 +28,7 @@ const ItemClient = ({ items, version }: ItemClientProps) => {
       </div>
 
       {selectedItem && (
-        <div className="w-1/2 h-full p-4 border rounded bg-gray-900 text-white">
+        <div className="w-1/2 h-full p-4 rounded bg-gray-900 text-white">
           <SelectedItemDetail
             selectedItem={selectedItem}
             items={items}

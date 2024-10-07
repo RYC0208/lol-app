@@ -1,7 +1,7 @@
 "use server";
 
 import { Item, ItemList } from "@/types/Item";
-import { Day, getLatestVersion } from "./Api";
+import { Day, getLatestVersion } from "../utils/Api";
 import { handleFetchError } from "./ChampActions";
 
 export async function getItemListAction(): Promise<Item[]> {

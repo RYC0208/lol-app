@@ -6,26 +6,28 @@ export async function GET() {
   const URL = "https://kr.api.riotgames.com/lol/platform/v3/champion-rotations";
 
   if (!API_KEY) {
-    return NextResponse.json({ message: "API 키가 설정되지 않았습니다." }, { status: 500 });
+    return NextResponse.json(
+      { message: "API 키가 설정되지 않았습니다." },
+      { status: 500 }
+    );
   }
 
-  try {
-    const response = await fetch(URL, {
-      headers: {
-        "X-Riot-Token": API_KEY,
-      },
-    });
+  const response = await fetch(URL, {
+    headers: {
+      "X-Riot-Token": API_KEY,
+    },
+    next: {
+      revalidate: 86400,
+    },
+  });
 
-    if (!response.ok) {
-      return NextResponse.json(
-        { message: "로테이션 데이터 가져오기 실패", status: response.status },
-        { status: response.status }
-      );
-    }
-
-    const data: Rotation = await response.json();
-    return NextResponse.json(data);
-  } catch (error) {
-    return NextResponse.json({ message: "서버 오류 발생", error }, { status: 500 });
+  if (!response.ok) {
+    return NextResponse.json(
+      { message: "로테이션 데이터 가져오기 실패", status: response.status },
+      { status: response.status }
+    );
   }
+
+  const data: Rotation = await response.json();
+  return NextResponse.json(data);
 }

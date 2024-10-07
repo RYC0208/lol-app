@@ -1,6 +1,6 @@
 import { Rotation } from "@/types/ChampionRotation";
 import { Champion } from "../types/Champion";
-import { getChampionListAction } from "./ChampActions";
+import { getChampionListAction } from "../server/ChampActions";
 export const getRotation = async (): Promise<Champion[]> => {
   try {
     const champions = await getChampionListAction();
