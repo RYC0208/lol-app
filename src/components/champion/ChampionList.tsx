@@ -12,7 +12,7 @@ const ChampionList: React.FC<ChampionListProps> = ({ champions }) => {
   });
 
   return (
-    <div className="grid grid-cols-6 gap-3 h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-900">
+    <div className="grid grid-cols-6 gap-3 p-[50px] h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-900">
       {sortedChampions.map((champion) => (
         <ChampionCard key={champion.id} champion={champion} />
       ))}

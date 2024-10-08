@@ -16,7 +16,7 @@ const SelectedItemDetail = ({
   onItemClick,
 }: SelectedItemDetailProps) => {
   return (
-    <div className="text-white  h-screen  overflow-y-auto">
+    <div className="text-white p-[50px] h-screen  overflow-y-auto">
       {selectedItem.into && selectedItem.into.length > 0 && (
         <div>
           <div className="flex flex-row">

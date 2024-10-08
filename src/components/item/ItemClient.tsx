@@ -19,7 +19,7 @@ const ItemClient = ({ items, version }: ItemClientProps) => {
 
   return (
     <>
-      <div className="flex flex-row justify-center w-1/2 h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-900">
+      <div className="flex flex-row justify-center p-[50px] w-1/2 h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-900">
         <ItemList
           items={items}
           version={version}
