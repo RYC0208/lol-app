@@ -23,6 +23,8 @@ const RotationPage = () => {
   if (isLoading) {
     return <Loading />;
   }
+  // 예전 방식 로딩
+  // tanstack Query로 로딩 처리
 
   return (
     <div className="bg-gradient-to-br from-[#0b1538] to-[#1b2234]">

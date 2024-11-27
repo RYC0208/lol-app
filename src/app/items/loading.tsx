@@ -1,0 +1,1 @@
+// 먼저 React Suspense 이해하고 -> next.js Suspense 및 errorBoundary

@@ -21,6 +21,9 @@ const Page = async () => {
   if (!filteredItems[0]) {
     return <>로딩중</>;
   }
+
+  //  Suspense로 로딩처리 > loading.tsx
+  
   return (
     <div className="flex flex-row items-center bg-gradient-to-br from-[#0b1538] to-[#1b2234]">
       <ItemClient items={filteredItems} version={version} />
