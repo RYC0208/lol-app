@@ -19,5 +19,5 @@ const ChampionList: React.FC<ChampionListProps> = ({ champions }) => {
     </div>
   );
 };
-
+// 테스트
 export default ChampionList;
